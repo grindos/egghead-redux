@@ -1,12 +1,9 @@
-let nextTodoId = 0;
-const addTodo = text => {
-  const result = {
-    type: 'ADD_TODO',
-    id: nextTodoId,
-    text,
-  };
-  nextTodoId += 1;
-  return result;
-};
+import { v4 } from 'node-uuid';
+
+const addTodo = text => ({
+  type: 'ADD_TODO',
+  id: v4(),
+  text,
+});
 
 export default addTodo;

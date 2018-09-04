@@ -21,7 +21,7 @@ const Link = ({ active, children, onClick }) => {
 };
 Link.propTypes = {
   active: PropTypes.bool,
-  children: PropTypes.object,
+  children: PropTypes.string,
   onClick: PropTypes.func,
 };
 
