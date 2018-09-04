@@ -1,0 +1,15 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Provider } from 'react-redux';
+import TodoApp from './TodoApp';
+
+const Root = ({ store }) => (
+  <Provider store={store}>
+    <TodoApp />
+  </Provider>
+);
+Root.propTypes = {
+  store: PropTypes.object,
+};
+
+export default Root;

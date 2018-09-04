@@ -1,29 +1,12 @@
 import './index.css';
-
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore, applyMiddleware } from 'redux';
-import { Provider } from 'react-redux';
-import ReduxPromise from 'redux-promise';
-import throttle from 'lodash/throttle';
+import Root from './components/Root';
+import configureStore from './store';
 
-import reducer from './reducers';
-import TodoApp from './TodoApp';
-import { loadState, saveState } from './localStorage';
-
-const persistedState = loadState();
-const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
-const store = createStoreWithMiddleware(reducer, persistedState);
-
-store.subscribe(throttle(() => {
-  saveState({
-    todos: store.getState().todos,
-  });
-}), 1000);
+const store = configureStore();
 
 ReactDOM.render(
-  <Provider store={store}>
-    <TodoApp />
-  </Provider>,
+  <Root store={store} />,
   document.getElementById('root'),
 );
