@@ -35,14 +35,12 @@ TodoList.propTypes = {
   onTodoClick: PropTypes.func,
 };
 
-const mapStateTodoToProps = (state, ownProps) => ({
+const mapStateToProps = (state, ownProps) => ({
   todos: getVisibleTodos(state.todos, ownProps.match.params.filter || 'all'),
 });
 
-const mapDispatchTodoToProps = dispatch => ({
-  onTodoClick(id) {
-    dispatch(toggleTodo(id));
-  },
-});
+const mapDispatchToProps = {
+  onTodoClick: toggleTodo,
+};
 
-export default withRouter(connect(mapStateTodoToProps, mapDispatchTodoToProps)(TodoList));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(TodoList));
